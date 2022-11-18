@@ -1,0 +1,7 @@
+_target_: catboost.CatBoostRegressor
+iterations: 10
+use_best_model: True
+depth: 6
+#n_estimators: 500
+silent: False
+eval_metric: MultiRMSE

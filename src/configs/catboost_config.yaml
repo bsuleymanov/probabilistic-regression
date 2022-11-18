@@ -1,0 +1,16 @@
+defaults:
+  - solver: catboost_solver
+  - data@data.train: purchases_train
+  - data@data.val: purchases_val
+  - training: purchases_catboost
+  - logging: catboost_logging
+  - model@model: catboost
+  - metrics@metrics: default_metrics
+
+data:
+  train:
+    mode: "train"
+  val:
+    mode: "val"
+    dataloader:
+      batch_size: 2

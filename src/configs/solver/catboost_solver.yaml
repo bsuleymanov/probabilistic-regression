@@ -1,0 +1,14 @@
+_target_: src.trainer.CatboostSolver
+_recursive_: false
+model: ${model}
+loss:
+  _target_: src.losses.MultiOutputLogNormal
+  #_target_: torch.nn.L1Loss
+train_loader: ${data.train.dataloader}
+val_loader: ${data.val.dataloader}
+metric_fns: ${metrics.metric_fns}
+logger: ${..logging}
+early_stopping_rounds: ${training.early_stopping_rounds}
+save_dir: "models"
+model_name: "catboost_model"
+device: ${training.device}
