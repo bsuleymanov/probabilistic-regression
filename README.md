@@ -10,4 +10,4 @@ The most part of lifetime values is zeros and common distribution of non-zero pa
 
 To customize your pipeline, change the corresponding config:
 
-<img src="https://raw.githubusercontent.com/bsuleymanov/probabilistic-regression/main/images/config.png?token=GHSAT0AAAAAABZRMBP27VKONFHCLGTLQ5DEY3XZJTA"/>
+<img src="https://raw.githubusercontent.com/bsuleymanov/probabilistic-regression/main/images/config.png?token=GHSAT0AAAAAABZRMBP27VKONFHCLGTLQ5DEY3XZJTA" height="640">
