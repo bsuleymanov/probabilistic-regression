@@ -9,4 +9,5 @@ The most part of lifetime values is zeros and common distribution of non-zero pa
 - Catboost regressor with custom Zero-Inflated LogNormal objective function
 
 To customize your pipeline, change the corresponding config:
-![configs](https://raw.githubusercontent.com/bsuleymanov/probabilistic-regression/main/images/config.png?token=GHSAT0AAAAAABZRMBP27VKONFHCLGTLQ5DEY3XZJTA "configs")
+
+![configs](https://raw.githubusercontent.com/bsuleymanov/probabilistic-regression/main/images/config.png?token=GHSAT0AAAAAABZRMBP27VKONFHCLGTLQ5DEY3XZJTA "configs" =100x200)
