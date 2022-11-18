@@ -1,0 +1,9 @@
+_target_: src.dataloaders.PurchasesLoader
+data_dir: ${..data_dir}
+x_filename: 103600030_x_eval.csv
+y_filename: 103600030_y_eval.csv
+batch_size: 1024
+mode: ${..mode}
+drop_last: false
+shuffle: true
+num_workers: 8
