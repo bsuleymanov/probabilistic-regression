@@ -11,9 +11,11 @@ from math import log, exp, log1p, sqrt
 def sigmoid(x):
   return 1 / (1 + exp(-x))
 
+
 @numba.jit
 def softplus(x):
     return log1p(exp(-abs(x))) + max(x, 0)
+
 
 def mape_loss(prediction, target, reduction="mean"):
     mask = target != 0
@@ -58,6 +60,7 @@ def mape_loss_wo_zeros(prediction, target, reduction="mean"):
         )
     return loss * 100
 
+
 def ziln_loss(logits, target, reduce="mean"):
     is_positive = (target > 0).float()
     positive_logits = logits[:, :1]
@@ -73,26 +76,19 @@ def ziln_loss(logits, target, reduce="mean"):
 
 class MultiOutputLogNormal(MultiTargetCustomObjective):
     def calc_ders_multi(self, approx, target, weight):
-        """
-        :param approx: probability, mu and sigma
-        :param target:
-        :param weight:
-        :return:
-        """
         if target[0] == 0:
             der1 = [0.0, 0.0, 0.0]
         else:
             eps = 1e-6
-            prob, mu, scale = approx
-            prob = max(sigmoid(prob), eps)
-            prob = min(prob, 1 - eps)
-            mu_pred = approx[0]
-            sigma_pred = max(softplus(approx[1]), sqrt(eps))
+            prob, mu_pred, sigma_pred = approx
+            prob = min(max(sigmoid(prob), eps), 1 - eps)
+            sigma_pred = max(softplus(sigma_pred), sqrt(eps))
             y_true = target[0]
 
-            dLdmu = (log(y_true) - mu_pred) / sigma_pred ** 2
-            dLdsigma = - 1 / sigma_pred + ((log(y_true) - mu_pred) ** 2) / sigma_pred ** 3
-            dLdpred = (y_true - prob) / (prob * (1 - prob))
+            dLdmu = (log(y_true) - mu_pred) / (sigma_pred ** 2 + eps)
+            dLdsigma = - 1 / (sigma_pred + eps) + ((log(y_true) - mu_pred) ** 2) / (sigma_pred ** 3 + eps)
+            dLdsigma *= sigmoid(sigma_pred)
+            dLdpred = y_true - prob
             der1 = [dLdpred, dLdmu, dLdsigma]
 
         w = weight if weight is not None else 1.0
