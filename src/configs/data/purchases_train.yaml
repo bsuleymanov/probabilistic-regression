@@ -1,6 +1,0 @@
-defaults:
-  - ../dataloader@dataloader: purchases_train
-
-
-data_dir: "../data/"
-mode: ???

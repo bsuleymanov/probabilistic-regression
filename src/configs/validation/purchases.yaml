@@ -1,3 +1,0 @@
-defaults:
-  - ../logging@logging: default_logging
-  - ../metrics@metric_fns: default_metrics

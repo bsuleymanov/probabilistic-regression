@@ -1,8 +1,0 @@
-defaults:
-  - ../logging@logging: default_logging
-
-optimizer:
-  _target_: torch.optim.Adam
-  lr: 2e-4
-n_epochs: 400
-device: cpu

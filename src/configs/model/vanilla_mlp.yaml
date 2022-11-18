@@ -1,7 +1,0 @@
-_target_: src.models.BaseMLP
-n_categorical: 2
-n_numerical: 2
-emb_dims: 4
-layer_dims: [64, 64, 64]
-output_dim: 1
-activation: "relu"

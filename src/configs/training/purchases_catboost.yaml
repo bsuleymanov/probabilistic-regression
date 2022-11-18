@@ -1,5 +1,0 @@
-defaults:
-  - ../logging@logging: default_logging
-
-early_stopping_rounds: 100
-device: cpu

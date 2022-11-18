@@ -1,7 +1,0 @@
-verbose: true
-print_every: 100
-eval_every: 1
-save_every: 100
-
-plot_file: logging/plot.log
-snapshot_file: None #logging/snapshot.log
