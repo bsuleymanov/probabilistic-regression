@@ -14,15 +14,14 @@ class PurchasesDataset(utils.data.Dataset):
         self._n_numeric = len(self._numeric_features)
         self.data = pd.read_csv(x_filename)[
             self.categorical_features + self.numeric_features
-        ].astype(np.float32)#.iloc[:1050]
+        ].astype(np.float32)
         column_types = {}
         for categorical_column in self.categorical_features:
             column_types[categorical_column] = "long"
         self.data = self.data.astype(column_types)
-        self.labels = pd.read_csv(y_filename).values.reshape(-1, 1).astype(np.float32)#[:1050]
+        self.labels = pd.read_csv(y_filename).values.reshape(-1, 1).astype(np.float32)
         self.labels = np.tile(self.labels, 3)
-        #print(self.labels.shape)
-        #input()
+
         self.initialize_vocab_sizes_from_data()
         self.data_df = self.data
         self.data = self.data_df.values
